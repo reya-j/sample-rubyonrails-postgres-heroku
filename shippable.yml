@@ -4,27 +4,27 @@ rvm:
 
 env:
   global:
-    - APP_NAME=qhode
+    - APP_NAME=qhodeheroku
     - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
     - secure: pyrH38uDVhcF0wel/UzM9hSotCJF/Q3O+8gjEAytMW1zAW4KkQzFYNTHwbLNIMMfRvA0h7yIH0FF1Rc0ZNz4gDvCXpY4f89BF7LlCA3o2W4GkpEWpJOUdjQEc52PAvhnuK3ioZUVlTiDvbZ4kc1HPSc5hdzc8fiL4/he5HfYjWG91MSqRsANkTIMGCpC/Do3HiH3Glw62Ze2QL6nrOZesLvCxTF5b46Yim38BGM57+TFTsQfSW0Q6i4aIvQporLMo6DlFEL3q/wA9mkcWd/Jrjm74koQXeMOYAYGHRIvm3CMgL9XDPflmVQ6lQ+iSsf9sB45VSPfgX/5s/A8jNC3MA== 
     #- secure: Z/0/N8qjyE9Tz54Euvshidj5uby3xV5ieCWDhSMR6NFaW0iAJk4/YfCrAZQTEWnRWVZdcinJHu7LWLG1YfRmVrSuvHNoXEUZSQqjEPMaUhkYzsTdQhxv5EjCCbexmkGIUVlBETFoyT8Uda0TmCzezFSghpMPrrJelaa42+QPelHfwe+//43xd9Y0oMvUmE4m0YbF9nx/ApC1Ck48XJhMWa+DJK+2vBnljsPFO3/IVXvC1cfRR2Zy3s2BoXjTiSKEAjkCgWFEDG+p2Z9WhSQ1mbDnRQPVmyGDgh1kkxt/4/YUPA4kmxsGifq5hAUkOFd0rrc8VdXIid1L/+MGHPBcpw==
 
    # - secure: MRuHkLbL9HPkJPU5lzkKM1+NOq1S5RrhxEyhJkk60xxYiF7DMzydiBN8oFBjWrSmyGeGRuEC22a0I5ItobdWVszfcJCaXHwtfKzfGOUdKuyCnDgvojXhv/jrBvULyLK6zsLw3b8NMxdnwNsHqSPm19qW/EIGEl9Zv/637Igos69z9aT7+xrEG013+6HtKYb8RHm+iPSNsFoBi/RSAHYuM1eLTZWG2WAkjgzZaYmrHCgNwVmk+HOGR+TOWN7Iu5lrjyvC1XDCQrOvo1hZI30cd9OqJ5aadFm3exQpNhI4I7AgOnCbK3NoWNc/GAnqKXCvsaIQ80Jd/uLIOVyMjD6Xmg==
-build:
-  ci:
-    - ruby -v
-    - which heroku || wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-    - mkdir -p shippable/testresults
-    - mkdir -p shippable/codecoverage
-    #- psql -c 'create database "sample-rubyonrails-postgres-heroku_test";' -U postgres
-    # - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
-    # - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
-    #- git push -f git@heroku.com:$APP_NAME.git master
-    #- git push -f heroku $BRANCH:master
-   # - heroku run rake db:migrate
-    - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f /tmp/ssh/00_sub > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
-    - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
-    - git push -f heroku master
+# build:
+#   ci:
+#     - ruby -v
+#     - which heroku || wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+#     - mkdir -p shippable/testresults
+#     - mkdir -p shippable/codecoverage
+#     #- psql -c 'create database "sample-rubyonrails-postgres-heroku_test";' -U postgres
+#     # - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
+#     # - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
+#     #- git push -f git@heroku.com:$APP_NAME.git master
+#     #- git push -f heroku $BRANCH:master
+#   # - heroku run rake db:migrate
+#     - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f /tmp/ssh/00_sub > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
+#     - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
+#     - git push -f heroku master
 # before_install:
 #   - which heroku || wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
@@ -40,3 +40,16 @@ build:
 #   - heroku run rake db:migrate
 # on_success:
 #   - git push -f git@heroku.com:$APP_NAME.git master
+before_install:
+  - which heroku || wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+before_script: 
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+  - psql -c 'create database "sample-rubyonrails-postgres-heroku_test";' -U postgres
+
+after_success:
+  - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
+  - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
+  - git push -f heroku $BRANCH:master
+  - heroku run rake db:migrate
