@@ -4,10 +4,9 @@ rvm:
 
 env:
   global:
-    - APP_NAME=qhodeheroku1
+    - APP_NAME=qhodeheroku2
     - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
-    - secure: IjboH6jSVX/WHTYtJ9P9zCfaz7BaxPB6/uDUrRY6ZwWxaZBA5x4CNPt/ZSxe4PNOr5cPVPtOlY3/CNT7GtEGJAZ0boQBtsaX0oVA5y5YPkvb0bWaW/Bvdt8AvNlogzp4n6AIMoxRcaNvFOvTMQP7mSE7lHxZGqe6pImOzMaSUQXTFhk6C4yCpeyQMFKH0YMoWFO82+XMI4BAHzfH4sC6HQaxuy5r4Z/wzhc/Dn6U+JQcnGtgiZEkx7/DV8y+cN4qHuzZ5J2ZtujiQ9rwuqDHt9khBRLUQzqgHrXvKzQJPyXvDlby0vBq1Ty/kS4qQ27lOiyZinB8Y5+XaTLxShEHTw== 
-
+    - secure: eIQjJv+w/zrCOZCypuy3HdBRqHxmvzvlYk40UtXN2eq4KAqcZxZr7eXiRD14oz2qGzQIIqkU9v41Be0lqQQ/PNCzfI/3GRomVmMBayZbOv0ovEuK2lDHlVc4BtM8+44nwX9D19MR0ohjfOWkAD6AkftiP1qfxnmFBj+Zs/FNqn0rDAPT+GEc/yXv4/5kbRf7BDAq5JJAJLXWaSxAq9wElRTpgkndeqNGryC9Lhaf/R5ndV5Qow2VeLslP1FRijQGi9uxR1/XvEdnYowqucHWbGMoRvpws3jzPaey6qt9CPqgrbOqWY7UXuL99I0hntnbnYrCjlSHxCysMNVGp8JrFQ==
    # - secure: MRuHkLbL9HPkJPU5lzkKM1+NOq1S5RrhxEyhJkk60xxYiF7DMzydiBN8oFBjWrSmyGeGRuEC22a0I5ItobdWVszfcJCaXHwtfKzfGOUdKuyCnDgvojXhv/jrBvULyLK6zsLw3b8NMxdnwNsHqSPm19qW/EIGEl9Zv/637Igos69z9aT7+xrEG013+6HtKYb8RHm+iPSNsFoBi/RSAHYuM1eLTZWG2WAkjgzZaYmrHCgNwVmk+HOGR+TOWN7Iu5lrjyvC1XDCQrOvo1hZI30cd9OqJ5aadFm3exQpNhI4I7AgOnCbK3NoWNc/GAnqKXCvsaIQ80Jd/uLIOVyMjD6Xmg==
 build:
    ci:
