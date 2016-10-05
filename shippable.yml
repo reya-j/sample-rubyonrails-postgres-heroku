@@ -14,7 +14,7 @@ build:
      - which heroku || wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
      - mkdir -p shippable/testresults
      - mkdir -p shippable/codecoverage
-     - psql -c 'create database "sample-rubyonrails-postgres-heroku_test";' -U postgres
+    # - psql -c 'create database "sample-rubyonrails-postgres-heroku_test";' -U postgres
      - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f /tmp/ssh/00_sub > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
      #- test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
      - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
