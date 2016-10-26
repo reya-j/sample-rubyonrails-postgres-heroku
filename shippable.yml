@@ -4,7 +4,7 @@ rvm:
 
 env:
   global:
-    - APP_NAME=qhodeheroku1
+    - APP_NAME=testr1
     - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
     #- secure: rXmZw9JRs+xlOJ2si6QutgdvIQUwqAp9gvt3m58NvRmjYCky00v8JlvhxjhSyWfWZ1Je7zAGhQauACX4IPhH0x4BWAe/HZLDkKcoNtvGGJKuxwMhbDKNioZe7FiNC58JcFHN3mcRMz2Y1tk/OTvKja2Jp+bRNDoTB9U1xhdAAKPjdHxku1Dzn+rJti5dlevaXrJN2dzocJlumKhA5fNDEDYHR6KaYf0OzY5sj4sXsj2XXarEZCr63KUjPoo71TRo2o5Rhg6p2jwMZMGkVAkjQ4jrEQ9Z9BI8/wsUklOhl1rFdF5dJRL45RAd8/PKH8pA9CgXRRWLaoLQRT/LSjFyAA==
   #  - secure: MRuHkLbL9HPkJPU5lzkKM1+NOq1S5RrhxEyhJkk60xxYiF7DMzydiBN8oFBjWrSmyGeGRuEC22a0I5ItobdWVszfcJCaXHwtfKzfGOUdKuyCnDgvojXhv/jrBvULyLK6zsLw3b8NMxdnwNsHqSPm19qW/EIGEl9Zv/637Igos69z9aT7+xrEG013+6HtKYb8RHm+iPSNsFoBi/RSAHYuM1eLTZWG2WAkjgzZaYmrHCgNwVmk+HOGR+TOWN7Iu5lrjyvC1XDCQrOvo1hZI30cd9OqJ5aadFm3exQpNhI4I7AgOnCbK3NoWNc/GAnqKXCvsaIQ80Jd/uLIOVyMjD6Xmg==
