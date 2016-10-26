@@ -4,22 +4,24 @@ rvm:
 
 env:
   global:
-    - APP_NAME=testr1
+    - APP_NAME=one123
     - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
+    - secure: E3OZBXzqgG9EusuiHQ1UEB5HmBgh0DrlLmKFW4U5vKAreHdICWBuKioYacGr1DTWGrGcAe7T+T8AFUalYWAYBDL/0finEWnbWtY3g2fSdxm1kUg0XWD6LKpAWw+tSjlr/Ep58avErZXsX+IXzRWOYWcx1dTI3uWg1IAJJlF8EK7Z6Oy4Ay8JIvk9vs9Q5P9bP3D29WKWmwiMfuDFnaTn4TXBQ1kuAI67AcU+B2rg4gEpmyPHFQOZOuAMiifQ+RS29RaSKh8QdGnCQ2XnBVi/t/f5nuForzk8ZrzCwX5kGunh/fl1boqSUXo94SxNPQ+l5zJVhKj5xYPY3GSzK+UmYw==
+
     #- secure: rXmZw9JRs+xlOJ2si6QutgdvIQUwqAp9gvt3m58NvRmjYCky00v8JlvhxjhSyWfWZ1Je7zAGhQauACX4IPhH0x4BWAe/HZLDkKcoNtvGGJKuxwMhbDKNioZe7FiNC58JcFHN3mcRMz2Y1tk/OTvKja2Jp+bRNDoTB9U1xhdAAKPjdHxku1Dzn+rJti5dlevaXrJN2dzocJlumKhA5fNDEDYHR6KaYf0OzY5sj4sXsj2XXarEZCr63KUjPoo71TRo2o5Rhg6p2jwMZMGkVAkjQ4jrEQ9Z9BI8/wsUklOhl1rFdF5dJRL45RAd8/PKH8pA9CgXRRWLaoLQRT/LSjFyAA==
   #  - secure: MRuHkLbL9HPkJPU5lzkKM1+NOq1S5RrhxEyhJkk60xxYiF7DMzydiBN8oFBjWrSmyGeGRuEC22a0I5ItobdWVszfcJCaXHwtfKzfGOUdKuyCnDgvojXhv/jrBvULyLK6zsLw3b8NMxdnwNsHqSPm19qW/EIGEl9Zv/637Igos69z9aT7+xrEG013+6HtKYb8RHm+iPSNsFoBi/RSAHYuM1eLTZWG2WAkjgzZaYmrHCgNwVmk+HOGR+TOWN7Iu5lrjyvC1XDCQrOvo1hZI30cd9OqJ5aadFm3exQpNhI4I7AgOnCbK3NoWNc/GAnqKXCvsaIQ80Jd/uLIOVyMjD6Xmg==
 build:
    ci:
      - ruby -v
- #with    - which heroku || wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-  # with   - mkdir -p shippable/testresults
-# with     - mkdir -p shippable/codecoverage
+     - which heroku || wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+     - mkdir -p shippable/testresults
+     - mkdir -p shippable/codecoverage
     # - psql -c 'create database "sample-rubyonrails-postgres-heroku_test";' -U postgres
- #with    - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f /tmp/ssh/00_sub > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
+     - test -f ~/.ssh/id_rsa.heroku || ssh-keygen -y -f /tmp/ssh/00_sub > ~/.ssh/id_rsa.heroku && heroku keys:add ~/.ssh/id_rsa.heroku
  
-#with     - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
- #with    - git push -f heroku $BRANCH:master
- # with    - heroku run rake db:migrate
+     - git remote -v | grep ^heroku || heroku git:remote --ssh-git --app $APP_NAME
+     - git push -f heroku $BRANCH:master
+     - heroku run rake db:migrate
      - git push -f git@heroku.com:$APP_NAME.git master
  
   
